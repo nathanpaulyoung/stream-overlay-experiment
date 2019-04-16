@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:700');
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+$vaporwave-blue: hsl(212, 100%, 70%);
+$vaporwave-green: hsl(145, 100%, 70%);
+$vaporwave-pink: hsl(303, 100%, 70%);
+$vaporwave-purple: hsl(283, 100%, 50%);
+$dropshadow: hsla(0, 0%, 15%, 0.5);
+
+$z-index-html-body: 0;
+$z-index-theme-container: 10;
+$z-index-theme-background-rear: 20;
+$z-index-theme-background-fore: 30;
+$z-index-logo-container: 40;
+$z-index-logo-background: 50;
+$z-index-logo: 60;
+$z-index-nathan-does-x: 70;
+
+html, body {
+    z-index: $z-index-html-body;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#theme-container {
+    z-index: $z-index-theme-container;
+    width: 100%;
+    height: 100%;
+
+    & #theme-background-rear {
+        z-index: $z-index-theme-background-rear;
+    }
+
+    & #theme-background-fore {
+        z-index: $z-index-theme-background-fore;
+    }
+
+    & #logo-container {
+        z-index: $z-index-logo-container;
+
+        & #logo-background {
+            z-index: $z-index-logo-background;
+        }
+    
+        & #logo {
+            z-index: $z-index-logo;
+    
+            & #nathan, & #does, & #x {
+                z-index: $z-index-nathan-does-x;
+            }
+        }
+    }
+}
+
+.vaporwave-dots {
+    & #theme-background-rear {
+        position: absolute;
+        z-index: $z-index-theme-background-fore;
+        width: 200%;
+        height: 250%;
+        top: -50%;
+        left: -50%;
+        background: linear-gradient($vaporwave-green 25%, $vaporwave-blue 75%);
+        animation: bgrotate 120s infinite linear;
+    }
+
+    & #theme-background-fore {
+        position: absolute;
+        z-index: $z-index-theme-background-fore;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        transform: rotate(-15deg);
+        background-image: radial-gradient(transparent 37.5%, hsl(0, 0%, 100%) 37.5%);
+        background-size: 40px 40px;
+        background-repeat: repeat;
+        animation: bgscroll 180s infinite linear, bggrow 5s infinite linear;
+    }
+
+    & #logo-container {
+        position: relative;
+        z-index: $z-index-logo-container;
+        width: 100%;
+        height: 100%;
+
+        & #logo-background {
+            position: absolute;
+            left: 25vw;
+            bottom: -25vw;
+            z-index: $z-index-logo-background;
+            width: 50vw;
+            height: 50vw;
+            transform: rotate(45deg) skew(10deg, 10deg);
+            background-image: linear-gradient(135deg, $vaporwave-pink 0%, $vaporwave-purple 60%);
+            box-shadow: 5px 5px 25px 5px $dropshadow;
+
+            &:before {
+                position: absolute;
+                left: -20vw;
+                bottom: -30vw;
+                width: 50vw;
+                height: 50vw;
+                background-image: linear-gradient(135deg, $vaporwave-pink 0%, $vaporwave-purple 55%);
+                box-shadow: 5px 5px 25px 5px $dropshadow;
+                content: '';
+            }
+
+            &:after {
+                position: absolute;
+                left: 40vw;
+                bottom: 30vw;
+                width: 40vw;
+                height: 40vw;
+                background-image: linear-gradient(135deg, $vaporwave-pink 0%, $vaporwave-purple 45%);
+                box-shadow: 5px 5px 25px 5px $dropshadow;
+                content: '';
+            }
+        }
+
+        & #logo {
+            position: relative;
+            z-index: $z-index-logo;
+            width: 100%;
+            height: 100%;
+            top: -10vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: bumppump 0.5s infinite linear;
+    
+            & #nathan {
+                z-index: $z-index-nathan-does-x;
+                font-family: 'VT323', sans-serif;
+                text-transform: uppercase;
+                font-size: 10em;
+                color: white;
+                -webkit-text-stroke: 2px black;
+                text-shadow: 5px 5px 10px $dropshadow;
+                margin: 0.2em;
+            }
+
+            & #does {
+                z-index: $z-index-nathan-does-x;
+                font-family: 'VT323', sans-serif;
+                text-transform: uppercase;
+                font-size: 10em;
+                color: white;
+                -webkit-text-stroke: 2px black;
+                text-shadow: 5px 5px 10px $dropshadow;
+                margin: 0.2em;
+            }
+
+            & #x {
+                z-index: $z-index-nathan-does-x;
+                font-family: 'VT323', sans-serif;
+                text-transform: uppercase;
+                font-size: 10em;
+                color: white;
+                -webkit-text-stroke: 2px black;
+                text-shadow: 5px 5px 10px $dropshadow;
+                margin: 0.2em;
+            }
+        }
+    }
+
+    @keyframes bgscroll {
+        from { background-position: 0%; }
+        to { background-position: 100%; }
+    }
+
+    @keyframes bggrow {
+        0%, 100% { background-image: radial-gradient(transparent 37.5%, hsl(0, 0%, 100%) 37.5%); }
+        1%, 99% { background-image: radial-gradient(transparent 37.5%, hsl(0, 0%, 100%) 37.5%); }
+        2%, 98% { background-image: radial-gradient(transparent 37.5%, hsl(0, 0%, 100%) 37.5%); }
+        3%, 97% { background-image: radial-gradient(transparent 38.0%, hsl(0, 0%, 100%) 38.0%); }
+        4%, 96% { background-image: radial-gradient(transparent 38.0%, hsl(0, 0%, 100%) 38.0%); }
+        5%, 95% { background-image: radial-gradient(transparent 38.0%, hsl(0, 0%, 100%) 38.0%); }
+        6%, 94% { background-image: radial-gradient(transparent 38.5%, hsl(0, 0%, 100%) 38.5%); }
+        7%, 93% { background-image: radial-gradient(transparent 38.5%, hsl(0, 0%, 100%) 38.5%); }
+        8%, 92% { background-image: radial-gradient(transparent 39.0%, hsl(0, 0%, 100%) 39.0%); }
+        9%, 91% { background-image: radial-gradient(transparent 39.5%, hsl(0, 0%, 100%) 39.5%); }
+        10%, 90% { background-image: radial-gradient(transparent 40.0%, hsl(0, 0%, 100%) 40.0%); }
+        11%, 89% { background-image: radial-gradient(transparent 40.5%, hsl(0, 0%, 100%) 40.5%); }
+        12%, 88% { background-image: radial-gradient(transparent 41.0%, hsl(0, 0%, 100%) 41.0%); }
+        13%, 87% { background-image: radial-gradient(transparent 41.5%, hsl(0, 0%, 100%) 41.5%); }
+        14%, 86% { background-image: radial-gradient(transparent 42.0%, hsl(0, 0%, 100%) 42.0%); }
+        15%, 85% { background-image: radial-gradient(transparent 42.5%, hsl(0, 0%, 100%) 42.5%); }
+        16%, 84% { background-image: radial-gradient(transparent 43.0%, hsl(0, 0%, 100%) 43.0%); }
+        17%, 83% { background-image: radial-gradient(transparent 43.5%, hsl(0, 0%, 100%) 43.5%); }
+        18%, 82% { background-image: radial-gradient(transparent 44.0%, hsl(0, 0%, 100%) 44.0%); }
+        19%, 81% { background-image: radial-gradient(transparent 44.5%, hsl(0, 0%, 100%) 44.5%); }
+        20%, 80% { background-image: radial-gradient(transparent 45.0%, hsl(0, 0%, 100%) 45.0%); }
+        21%, 79% { background-image: radial-gradient(transparent 45.5%, hsl(0, 0%, 100%) 45.5%); }
+        22%, 78% { background-image: radial-gradient(transparent 46.0%, hsl(0, 0%, 100%) 46.0%); }
+        23%, 77% { background-image: radial-gradient(transparent 46.5%, hsl(0, 0%, 100%) 46.5%); }
+        24%, 76% { background-image: radial-gradient(transparent 47.0%, hsl(0, 0%, 100%) 47.0%); }
+        25%, 75% { background-image: radial-gradient(transparent 47.5%, hsl(0, 0%, 100%) 47.5%); }
+        26%, 74% { background-image: radial-gradient(transparent 48.0%, hsl(0, 0%, 100%) 48.0%); }
+        27%, 73% { background-image: radial-gradient(transparent 48.5%, hsl(0, 0%, 100%) 48.5%); }
+        28%, 72% { background-image: radial-gradient(transparent 49.0%, hsl(0, 0%, 100%) 49.0%); }
+        29%, 71% { background-image: radial-gradient(transparent 49.5%, hsl(0, 0%, 100%) 49.5%); }
+        30%, 70% { background-image: radial-gradient(transparent 50.0%, hsl(0, 0%, 100%) 50.0%); }
+        31%, 69% { background-image: radial-gradient(transparent 50.5%, hsl(0, 0%, 100%) 50.5%); }
+        32%, 68% { background-image: radial-gradient(transparent 51.0%, hsl(0, 0%, 100%) 51.0%); }
+        33%, 67% { background-image: radial-gradient(transparent 51.5%, hsl(0, 0%, 100%) 51.5%); }
+        34%, 66% { background-image: radial-gradient(transparent 52.0%, hsl(0, 0%, 100%) 52.0%); }
+        35%, 65% { background-image: radial-gradient(transparent 52.5%, hsl(0, 0%, 100%) 52.5%); }
+        36%, 64% { background-image: radial-gradient(transparent 53.0%, hsl(0, 0%, 100%) 53.0%); }
+        37%, 63% { background-image: radial-gradient(transparent 53.5%, hsl(0, 0%, 100%) 53.5%); }
+        38%, 62% { background-image: radial-gradient(transparent 54.0%, hsl(0, 0%, 100%) 54.0%); }
+        39%, 61% { background-image: radial-gradient(transparent 54.5%, hsl(0, 0%, 100%) 54.5%); }
+        40%, 60% { background-image: radial-gradient(transparent 55.0%, hsl(0, 0%, 100%) 55.0%); }
+        41%, 59% { background-image: radial-gradient(transparent 55.5%, hsl(0, 0%, 100%) 55.5%); }
+        42%, 58% { background-image: radial-gradient(transparent 56.0%, hsl(0, 0%, 100%) 56.0%); }
+        43%, 57% { background-image: radial-gradient(transparent 56.5%, hsl(0, 0%, 100%) 56.5%); }
+        44%, 56% { background-image: radial-gradient(transparent 56.5%, hsl(0, 0%, 100%) 56.5%); }
+        45%, 55% { background-image: radial-gradient(transparent 57.0%, hsl(0, 0%, 100%) 57.0%); }
+        46%, 54% { background-image: radial-gradient(transparent 57.0%, hsl(0, 0%, 100%) 57.0%); }
+        47%, 53% { background-image: radial-gradient(transparent 57.0%, hsl(0, 0%, 100%) 57.0%); }
+        48%, 52% { background-image: radial-gradient(transparent 57.5%, hsl(0, 0%, 100%) 57.5%); }
+        49%, 51% { background-image: radial-gradient(transparent 57.5%, hsl(0, 0%, 100%) 57.5%); }
+        50% { background-image: radial-gradient(transparent 57.5%, hsl(0, 0%, 100%) 57.5%); }
+    }
+
+    @keyframes bgrotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    @keyframes bumppump {
+        0% { transform: scale(1.0, 1.0); }
+        35% { transform: scale(1.0, 1.0); }
+        50% { transform: scale(1.1, 1.1); }
+        65% { transform: scale(1.0, 1.0); }
+        100% { transform: scale(1.0, 1.0); }
+    }
+}
+
+.griminimal {
+    & #theme-background-rear {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    & #theme-background-fore {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+
+}
